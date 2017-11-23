@@ -17,6 +17,12 @@
 
       <h2>{{ animal.name }}</h2>
 
+      <button ion-button default clear icon-only item-end
+              (click)="playAudio(animal)">
+              <ion-icon *ngIf="!animal.playing" name="play"></ion-icon>
+              <ion-icon *ngIf="animal.playing" name="pause"></ion-icon>
+      </button>
+
     </ion-item>
   </ion-list>
 
