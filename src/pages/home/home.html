@@ -9,21 +9,35 @@
 <ion-content>
 
   <ion-list>
-    <ion-item *ngFor="let animal of animals">
 
-      <ion-avatar item-start>
-        <img [src]="animal.image">
-      </ion-avatar>
+    <ion-item-sliding *ngFor="let animal of animals; let i = index">
 
-      <h2>{{ animal.name }}</h2>
+      <ion-item>
 
-      <button ion-button default clear icon-only item-end
-              (click)="playAudio(animal)">
-              <ion-icon *ngIf="!animal.playing" name="play"></ion-icon>
-              <ion-icon *ngIf="animal.playing" name="pause"></ion-icon>
-      </button>
+        <ion-avatar item-start>
+          <img [src]="animal.image">
+        </ion-avatar>
 
-    </ion-item>
+        <h2>{{ animal.name }}</h2>
+
+        <button ion-button default clear icon-only item-end
+                (click)="playAudio(animal)">
+                <ion-icon *ngIf="!animal.playing" name="play"></ion-icon>
+                <ion-icon *ngIf="animal.playing" name="pause"></ion-icon>
+        </button>
+
+      </ion-item>
+
+      <ion-item-options side="right">
+        <button ion-button color="danger"
+                (click)="deleteAnimal(i)">
+          <ion-icon name="trash"></ion-icon>
+          Borrar / Delete
+        </button>
+      </ion-item-options>
+
+    </ion-item-sliding>
+
   </ion-list>
 
 </ion-content>

@@ -73,4 +73,11 @@ export class HomePage {
 
   }
 
+
+  deleteAnimal( index: number ) {
+
+    this.animals.splice( index, 1 );
+
+  }
+
 }
