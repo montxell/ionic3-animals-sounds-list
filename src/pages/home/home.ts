@@ -4,7 +4,7 @@ import { ANIMALS } from '../../data/data.animals';
 
 import { Animal } from '../../interfaces/animal.interface';
 
-import { Refresher } from 'ionic-angular';
+import { Refresher, reorderArray } from 'ionic-angular';
 
 
 @Component({
@@ -22,6 +22,8 @@ export class HomePage {
   audio = new Audio();
 
   audioTime: any;
+
+  ordering: boolean = false;
 
 
   constructor() {
@@ -94,6 +96,13 @@ export class HomePage {
       refresher.complete();
 
     }, 1500)
+
+  }
+
+
+  reorderAnimals( indexes: any ) {
+
+    this.animals = reorderArray( this.animals, indexes );
 
   }
 

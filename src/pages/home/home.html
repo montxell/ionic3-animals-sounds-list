@@ -1,9 +1,29 @@
 <ion-header>
+
   <ion-navbar color="primary">
+
     <ion-title>
       Animals Sounds App
     </ion-title>
+
+    <ion-buttons end>
+
+      <button ion-button
+              *ngIf="!ordering"
+              (click)="ordering=true">
+        Ordenando / Ordering
+      </button>
+
+      <button ion-button
+              *ngIf="ordering"
+              (click)="ordering=false">
+        Listo / Ready
+      </button>
+
+    </ion-buttons>
+
   </ion-navbar>
+
 </ion-header>
 
 
@@ -14,7 +34,8 @@
   </ion-refresher>
 
 
-  <ion-list>
+  <ion-list [reorder]="ordering"
+            (ionItemReorder)="reorderAnimals($event)">
 
     <ion-item-sliding *ngFor="let animal of animals; let i = index">
 
