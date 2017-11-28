@@ -4,6 +4,8 @@ import { ANIMALS } from '../../data/data.animals';
 
 import { Animal } from '../../interfaces/animal.interface';
 
+import { Refresher } from 'ionic-angular';
+
 
 @Component({
   selector: 'page-home',
@@ -77,6 +79,21 @@ export class HomePage {
   deleteAnimal( index: number ) {
 
     this.animals.splice( index, 1 );
+
+  }
+
+
+  refreshAnimals( refresher: Refresher ) {
+
+    setTimeout( () => {
+
+      this.animals = ANIMALS.slice(0);
+
+      // To cancel the refresh animation (complete it's a property by default
+      // when adding import { Refresher } from 'ionic-angular')
+      refresher.complete();
+
+    }, 1500)
 
   }
 
